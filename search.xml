@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>修改swap分区</title>
+      <link href="/2019/02/21/%E4%BF%AE%E6%94%B9swap%E5%88%86%E5%8C%BA/"/>
+      <url>/2019/02/21/%E4%BF%AE%E6%94%B9swap%E5%88%86%E5%8C%BA/</url>
+      
+        <content type="html"><![CDATA[<h1 id="linux（ubuntu）下修改swap大小"><a href="#linux（ubuntu）下修改swap大小" class="headerlink" title="linux（ubuntu）下修改swap大小"></a>linux（ubuntu）下修改swap大小</h1><h3 id="第一步：查看内存空间大小"><a href="#第一步：查看内存空间大小" class="headerlink" title="第一步：查看内存空间大小"></a>第一步：查看内存空间大小</h3><p>free -m //m表示显示的字节单位是m（megabytes）</p><h3 id="第二步：删除已有交换分区"><a href="#第二步：删除已有交换分区" class="headerlink" title="第二步：删除已有交换分区"></a>第二步：删除已有交换分区</h3><p>cd /dev<br>sudo swapoff sda7  //sda7是通过gparted查看swap分区<br>sudo rm sda7</p><h3 id="第三步：创建新的交换分区"><a href="#第三步：创建新的交换分区" class="headerlink" title="第三步：创建新的交换分区"></a>第三步：创建新的交换分区</h3><p>sudo mkdir /swap<br>cd /swap<br>sudo dd if=/dev/zero of=swap.disk bs=1M count=3k（3k表示swap分区的大小为3G，如何设置为2G的话，则count=2k）<br>sudo mkswap -f swap.disk<br>sudo swapon swap.disk</p><h3 id="第四步：启动挂载swap分区"><a href="#第四步：启动挂载swap分区" class="headerlink" title="第四步：启动挂载swap分区"></a>第四步：启动挂载swap分区</h3><p>如果想开机后自动挂载swap分区，需要编辑/etc/fstab文件<br>sudo gedit /etc/fstab<br>打开文件后可以在文件末尾看到</p><p>#swap was on /dev/sda7 during installation<br>UUID=bc0df3aa-ceca-4275-b2d1-96d8968539ee  none  swap  sw  0  0<br>这是当初装系统时产生的swap分区信息，只需要将“UUID=***”改成/swap/swap.disk，保存重启即可。<br>重启后打开终端输入free命令，即可查看swap分区的大小。</p><h3 id="第五步：交换分区的优化"><a href="#第五步：交换分区的优化" class="headerlink" title="第五步：交换分区的优化"></a>第五步：交换分区的优化</h3><p>在终端输入“cat /proc/sys/vm/swappiness”命令可以查看系统默认的swappiness参数信息，默认值为<strong>60</strong>.解释一下swappiness参数，在ubuntu中该值的大小对如何使用swap分区有着很大的联系。swappiness=0，表示最大限度使用物理内存，然后才是swap分区，swappiness=100则表示积极使用swap分区，并且把内存上的数据及时的搬运到swap空间上。建议修该为<strong>10</strong>，具体操作如下：<br>sudo sysctl vm.swappiness=10<br>sudo gedit /etc/sysctl.conf<br>在文件末尾添加“vm.swappiness=10”，然后保存重启，设置完成。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ubuntu安装chrome</title>
+      <link href="/2019/02/21/ubuntu%E5%AE%89%E8%A3%85chrome/"/>
+      <url>/2019/02/21/ubuntu%E5%AE%89%E8%A3%85chrome/</url>
+      
+        <content type="html"><![CDATA[<p><strong>安装chrome</strong><br><code>sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.t.d/</code><br><code>wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -</code><br><code>sudo apt update</code><br><code>sudo apt install google-chrome-stable</code></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>基于xampp搭建dvwa</title>
+      <link href="/2019/02/21/%E5%9F%BA%E4%BA%8Exampp%E6%90%AD%E5%BB%BAdvwa/"/>
+      <url>/2019/02/21/%E5%9F%BA%E4%BA%8Exampp%E6%90%AD%E5%BB%BAdvwa/</url>
+      
+        <content type="html"><![CDATA[<h1 id="基于xampp搭建dvwa"><a href="#基于xampp搭建dvwa" class="headerlink" title="基于xampp搭建dvwa"></a>基于xampp搭建dvwa</h1><p><a href="https://www.apachefriends.org/index.html" target="_blank" rel="noopener"><strong>XAMPP</strong></a> is a completely free, easy to install Apache distribution containing MariaDB, PHP, and Perl. The <strong>XAMPP</strong> open source package has been set up to be incredibly easy to install and to use.<br><strong>官网：</strong> <a href="https://www.apachefriends.org/index.html" target="_blank" rel="noopener">https://www.apachefriends.org/index.html</a><br><a href="https://github.com/ethicalhack3r/DVWA" target="_blank" rel="noopener"><strong>Damn Vulnerable Web Application (DVWA)</strong></a> is a PHP/MySQL web application that is damn vulnerable. Its main goal is to be an aid for security professionals to test their skills and tools in a legal environment, help web developers better understand the processes of securing web applications and to aid both students &amp; teachers to learn about web application security in a controlled class room environment.<br><strong>github:</strong> <a href="https://github.com/ethicalhack3r/DVWA" target="_blank" rel="noopener">https://github.com/ethicalhack3r/DVWA</a></p><p>##<strong>安装xampp</strong><br>到官网根据自己的系统下载相应的安装文件，下载后可根据提示一步步进入安装。</p><p>##<strong>配置Apache</strong><br>由于Apache会与默认80端口产生冲突，所以要修改Apache的配置文件，软件打开后点击apache那一栏的Config，修改httpd.conf和httpd-ssl.conf的Listen属性改成与原来不一样的，之后点击上面Config中Service and port Settings 的 Main port和SSL port 改成与上一个一样的。</p><p>##<strong>下载dvwa</strong><br><strong>github:</strong> <a href="https://github.com/ethicalhack3r/DVWA" target="_blank" rel="noopener">https://github.com/ethicalhack3r/DVWA</a><br>下载解压或 git clone <a href="https://github.com/ethicalhack3r/DVWA.git" target="_blank" rel="noopener">https://github.com/ethicalhack3r/DVWA.git</a> 复制到 C:\xampp\htdocs下</p><p>##<strong>配置dvwa</strong><br>修改php目录下php.ini，找到<code>allow_url_fopen</code>和<code>allow_url_include</code>设置成on</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">allow_url_fopen = On</span><br><span class="line">allow_url_include = On</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2019/02/19/hello-world/"/>
+      <url>/2019/02/19/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>

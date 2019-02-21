@@ -3,15 +3,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>归档: 2019/2 | Xingyichao的博客</title>
+  <title>修改swap分区 | Xingyichao的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Xingyichao的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2019/02/index.html">
+  <meta name="description" content="linux（ubuntu）下修改swap大小第一步：查看内存空间大小free -m //m表示显示的字节单位是m（megabytes） 第二步：删除已有交换分区cd /devsudo swapoff sda7  //sda7是通过gparted查看swap分区sudo rm sda7 第三步：创建新的交换分区sudo mkdir /swapcd /swapsudo dd if=/dev/zero">
+<meta property="og:type" content="article">
+<meta property="og:title" content="修改swap分区">
+<meta property="og:url" content="http://yoursite.com/2019/02/21/修改swap分区/index.html">
 <meta property="og:site_name" content="Xingyichao的博客">
+<meta property="og:description" content="linux（ubuntu）下修改swap大小第一步：查看内存空间大小free -m //m表示显示的字节单位是m（megabytes） 第二步：删除已有交换分区cd /devsudo swapoff sda7  //sda7是通过gparted查看swap分区sudo rm sda7 第三步：创建新的交换分区sudo mkdir /swapcd /swapsudo dd if=/dev/zero">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-21T04:15:39.150Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Xingyichao的博客">
+<meta name="twitter:title" content="修改swap分区">
+<meta name="twitter:description" content="linux（ubuntu）下修改swap大小第一步：查看内存空间大小free -m //m表示显示的字节单位是m（megabytes） 第二步：删除已有交换分区cd /devsudo swapoff sda7  //sda7是通过gparted查看swap分区sudo rm sda7 第三步：创建新的交换分区sudo mkdir /swapcd /swapsudo dd if=/dev/zero">
   
     <link rel="alternate" href="/atom.xml" title="Xingyichao的博客" type="application/atom+xml">
   
@@ -64,108 +68,68 @@
   </div>
 </div>
 
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap animated rubberBand">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/02/21/修改swap分区/" class="archive-article-date">
+        <section id="main"><article id="post-修改swap分区" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/21/修改swap分区/" class="article-date">
   <time class="post-time" datetime="2019-02-21T04:13:59.000Z" itemprop="datePublished">
     <span class="post-month">2月</span><br>
     <span class="post-day">21</span>
   </time>
 </a>
-      
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/21/修改swap分区/">修改swap分区</a>
+    <h1 class="article-title" itemprop="name">
+      修改swap分区
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/02/21/ubuntu安装chrome/" class="archive-article-date">
-  <time class="post-time" datetime="2019-02-21T04:12:04.000Z" itemprop="datePublished">
-    <span class="post-month">2月</span><br>
-    <span class="post-day">21</span>
-  </time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/21/ubuntu安装chrome/">ubuntu安装chrome</a>
-    </h1>
-  
+        <div>
+          
+          
+              
 
-    </header>
-  </div>
-</article>
-  
+          
+        </div>
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/02/21/基于xampp搭建dvwa/" class="archive-article-date">
-  <time class="post-time" datetime="2019-02-21T04:09:28.000Z" itemprop="datePublished">
-    <span class="post-month">2月</span><br>
-    <span class="post-day">21</span>
-  </time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/21/基于xampp搭建dvwa/">基于xampp搭建dvwa</a>
-    </h1>
-  
+        <h1 id="linux（ubuntu）下修改swap大小"><a href="#linux（ubuntu）下修改swap大小" class="headerlink" title="linux（ubuntu）下修改swap大小"></a>linux（ubuntu）下修改swap大小</h1><h3 id="第一步：查看内存空间大小"><a href="#第一步：查看内存空间大小" class="headerlink" title="第一步：查看内存空间大小"></a>第一步：查看内存空间大小</h3><p>free -m //m表示显示的字节单位是m（megabytes）</p>
+<h3 id="第二步：删除已有交换分区"><a href="#第二步：删除已有交换分区" class="headerlink" title="第二步：删除已有交换分区"></a>第二步：删除已有交换分区</h3><p>cd /dev<br>sudo swapoff sda7  //sda7是通过gparted查看swap分区<br>sudo rm sda7</p>
+<h3 id="第三步：创建新的交换分区"><a href="#第三步：创建新的交换分区" class="headerlink" title="第三步：创建新的交换分区"></a>第三步：创建新的交换分区</h3><p>sudo mkdir /swap<br>cd /swap<br>sudo dd if=/dev/zero of=swap.disk bs=1M count=3k（3k表示swap分区的大小为3G，如何设置为2G的话，则count=2k）<br>sudo mkswap -f swap.disk<br>sudo swapon swap.disk</p>
+<h3 id="第四步：启动挂载swap分区"><a href="#第四步：启动挂载swap分区" class="headerlink" title="第四步：启动挂载swap分区"></a>第四步：启动挂载swap分区</h3><p>如果想开机后自动挂载swap分区，需要编辑/etc/fstab文件<br>sudo gedit /etc/fstab<br>打开文件后可以在文件末尾看到</p>
+<p>#swap was on /dev/sda7 during installation<br>UUID=bc0df3aa-ceca-4275-b2d1-96d8968539ee  none  swap  sw  0  0<br>这是当初装系统时产生的swap分区信息，只需要将“UUID=***”改成/swap/swap.disk，保存重启即可。<br>重启后打开终端输入free命令，即可查看swap分区的大小。</p>
+<h3 id="第五步：交换分区的优化"><a href="#第五步：交换分区的优化" class="headerlink" title="第五步：交换分区的优化"></a>第五步：交换分区的优化</h3><p>在终端输入“cat /proc/sys/vm/swappiness”命令可以查看系统默认的swappiness参数信息，默认值为<strong>60</strong>.解释一下swappiness参数，在ubuntu中该值的大小对如何使用swap分区有着很大的联系。swappiness=0，表示最大限度使用物理内存，然后才是swap分区，swappiness=100则表示积极使用swap分区，并且把内存上的数据及时的搬运到swap空间上。建议修该为<strong>10</strong>，具体操作如下：<br>sudo sysctl vm.swappiness=10<br>sudo gedit /etc/sysctl.conf<br>在文件末尾添加“vm.swappiness=10”，然后保存重启，设置完成。</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/02/19/hello-world/" class="archive-article-date">
-  <time class="post-time" datetime="2019-02-19T15:22:35.814Z" itemprop="datePublished">
-    <span class="post-month">2月</span><br>
-    <span class="post-day">19</span>
-  </time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/19/hello-world/">Hello World</a>
-    </h1>
-  
-
-    </header>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/21/修改swap分区/" data-id="cjse461c60002qwhto00unw1k" class="article-share-link">分享</a>
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/21/ubuntu安装chrome/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">ubuntu安装chrome</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
 
 
 </section>
